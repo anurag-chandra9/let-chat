@@ -33,10 +33,7 @@ export const getMessages = async (req, res) => {
         res.status(500).json({message:"Internal Server Error"});
         
     }};
-
-
-
-
+    
 export const sendMessage = async (req, res) => {
     try {
         const {text,image}=req.body;
@@ -58,11 +55,7 @@ export const sendMessage = async (req, res) => {
             });
        await newMessage.save();
 
-       //todo:realtime functionaality goes here by help of socket.io
-    //   const receiverSocketId=getReceiverSocketId(receiverId);
-    //   if(receiverSocketId){
-    //     io.to(receiverSocketId).emit("newMessage",newMessage);
-    //   }
+ 
     const receiverSocketId = getReceiverSocketId(receiverId);
 console.log("Receiver Socket ID:", receiverSocketId); // Debugging line
 
